@@ -1,4 +1,5 @@
 FROM node:18.16-alpine
 WORKDIR /usr/src/app
 
-CMD npm run dev
+COPY ./package.json ./
+RUN npm install
