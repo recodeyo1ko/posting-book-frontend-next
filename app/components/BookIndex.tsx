@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface Book {
@@ -51,7 +52,7 @@ const BookIndex = () => {
             <td>{book.title}</td>
             <td>{book.body}</td>
             <td>
-              <a href="#">Show</a>
+              <Link href={`books/${book.id}`}>Show</Link>
               <a href="#">Edit</a>
               <a href="#">Delete</a>
             </td>
