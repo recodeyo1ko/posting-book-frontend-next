@@ -1,8 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 
+interface Book {
+  id: number;
+  title: string;
+  body: string;
+}
+
 const BookIndex = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     const fetchBooks = async () => {
