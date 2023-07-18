@@ -10,22 +10,30 @@ interface Book {
 const BookIndex = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch("http://localhost:3001/api/posts");
-        if (!response.ok) {
-          throw new Error("Failed to fetch books.");
-        }
-
-        const data = await response.json();
-        setBooks(data);
-      } catch (error) {
-        console.error("Error fetching books:", error);
+  const fetchBooks = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/api/posts");
+      if (!response.ok) {
+        throw new Error("Failed to fetch books.");
       }
-    };
 
+      const data = await response.json();
+      setBooks(data);
+    } catch (error) {
+      console.error("Error fetching books:", error);
+    }
+  };
+
+  useEffect(() => {
     fetchBooks();
+
+    // 5秒ごとにデータを更新
+    const interval = setInterval(() => {
+      fetchBooks();
+    }, 2000);
+
+    // コンポーネントがアンマウントされた時にクリーンアップ
+    return () => clearInterval(interval);
   }, []);
 
   return (
