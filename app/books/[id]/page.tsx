@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+import Link from "next/link";
+import { usePathname, useSearchParams, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Book {
@@ -8,8 +10,8 @@ interface Book {
 }
 
 const Book = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  const pathname = usePathname();
+  const { id } = useParams();
 
   const [book, setBook] = useState<Book | null>(null);
 
@@ -39,9 +41,16 @@ const Book = () => {
 
   return (
     <div>
-      <h1>{book.title}</h1>
-      <p>Book id: {book.id}</p>
-      <p>{book.body}</p>
+      <p>
+        <strong>Title: </strong>
+        {book.title}
+      </p>
+      <p>
+        <strong>Body: </strong>
+        {book.body}
+      </p>
+      <div>EDIT</div>
+      <Link href={`/books`}>Back</Link>
     </div>
   );
 };
