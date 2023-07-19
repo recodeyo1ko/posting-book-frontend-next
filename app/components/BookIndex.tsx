@@ -69,7 +69,7 @@ const BookIndex = () => {
             <td>{book.body}</td>
             <td>
               <Link href={`books/${book.id}`}>Show</Link>
-              <a href="#">Edit</a>
+              <Link href={`/books/${book.id}/edit`}>Edit</Link>
               <button onClick={() => handleDelete(book.id)}>Delete</button>
             </td>
           </tr>
