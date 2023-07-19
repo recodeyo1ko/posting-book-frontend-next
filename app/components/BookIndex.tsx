@@ -25,6 +25,22 @@ const BookIndex = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/posts/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete book.");
+      }
+
+      // 削除成功後に本のリストを再取得して更新する
+      fetchBooks();
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  };
+
   useEffect(() => {
     fetchBooks();
 
@@ -54,7 +70,7 @@ const BookIndex = () => {
             <td>
               <Link href={`books/${book.id}`}>Show</Link>
               <a href="#">Edit</a>
-              <a href="#">Delete</a>
+              <button onClick={() => handleDelete(book.id)}>Delete</button>
             </td>
           </tr>
         ))}
