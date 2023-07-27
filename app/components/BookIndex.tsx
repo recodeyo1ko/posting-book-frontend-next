@@ -13,7 +13,7 @@ const BookIndex = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/posts");
+      const response = await fetch("http://localhost:3001/api/books");
       if (!response.ok) {
         throw new Error("Failed to fetch books.");
       }
@@ -27,7 +27,7 @@ const BookIndex = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/posts/${id}`, {
+      const response = await fetch(`http://localhost:3001/api/books/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {

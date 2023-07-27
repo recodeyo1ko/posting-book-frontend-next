@@ -15,7 +15,7 @@ const NewBookForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/api/posts", {
+      const response = await fetch("http://localhost:3001/api/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
