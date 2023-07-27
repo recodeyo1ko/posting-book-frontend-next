@@ -9,9 +9,11 @@ interface Book {
   body: string;
 }
 
-const Book = () => {
+const BookEdit = () => {
   const pathname = usePathname();
   const { id } = useParams();
+  console.log("pathname", pathname);
+  console.log("id", id);
 
   const [book, setBook] = useState<Book | null>(null);
 
@@ -49,10 +51,10 @@ const Book = () => {
         <strong>Body: </strong>
         {book.body}
       </p>
-      <Link href={`/books/${book.id}/edit`}>Edit</Link>
+      <div>EDIT</div>
       <Link href={`/books`}>Back</Link>
     </div>
   );
 };
 
-export default Book;
+export default BookEdit;
