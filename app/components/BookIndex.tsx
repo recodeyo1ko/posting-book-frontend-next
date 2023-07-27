@@ -25,7 +25,7 @@ const BookIndex = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id: number) => {
     try {
       const response = await fetch(`http://localhost:3001/api/books/${id}`, {
         method: "DELETE",
@@ -68,7 +68,7 @@ const BookIndex = () => {
             <td>{book.title}</td>
             <td>{book.body}</td>
             <td>
-              <Link href={`books/${book.id}`}>Show</Link>
+              <Link href={`/books/${book.id}`}>Show</Link>
               <Link href={`/books/${book.id}/edit`}>Edit</Link>
               <button onClick={() => handleDelete(book.id)}>Delete</button>
             </td>
