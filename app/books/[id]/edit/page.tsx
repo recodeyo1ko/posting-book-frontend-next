@@ -26,7 +26,7 @@ const BookEdit = () => {
     };
     try {
       const response = await fetch(`http://localhost:3001/api/books/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
